@@ -1,4 +1,4 @@
-import hashlib
+'''import hashlib
 import time
 import os
 from Crypto.Cipher import AES
@@ -72,4 +72,24 @@ start_time = time.perf_counter()
 encrypted_data = xor_encrypt(data, key)
 end_time = time.perf_counter()
 total_time = (end_time-start_time)*1000
-print("异或加密的时间为：", total_time)
+print("异或加密的时间为：", total_time)'''
+
+
+# 运行时间计算
+# UAV运行次数
+num_aes = 0
+num_xor = 1
+num_rand = 2
+num_puf = 1
+num_hash = 5
+# GS运行次数
+aes = 0
+xor = 1
+rand = 1
+hash = 5
+other = 0
+total_uav_time = 0.02646*num_xor+0.06135*num_hash + \
+    0.01052*num_rand+2.06104*num_puf+0.82487*num_aes
+total_gs_time = 0.00537*xor+0.00904*hash + \
+    0.00358*rand+0.28915*aes+other
+print("协议计算时间(ms)为：", total_uav_time+total_gs_time)
