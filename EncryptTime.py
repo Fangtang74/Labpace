@@ -74,7 +74,7 @@ start_time = time.perf_counter()
 encrypted_data = xor_encrypt(data, key)
 end_time = time.perf_counter()
 total_time = (end_time-start_time)*1000
-print("异或加密的时间为：", total_time)'''
+print("异或加密的时间为：", total_time)
 
 
 def fuzzy(x):
@@ -113,23 +113,29 @@ start_time = time.perf_counter()
 random.shuffle(lst)  # 随机打乱列表
 end_time = time.perf_counter()
 print("随机洗牌的时间：", (end_time-start_time)*1000)
-
 '''
 # 运行时间计算
 # UAV运行次数
 num_aes = 0
-num_xor = 1
+num_xor = 7
 num_rand = 2
-num_puf = 1
-num_hash = 5
+num_puf = 2
+num_hash = 8
+num_gen = 0
+num_rands = 0
 # GS运行次数
 aes = 0
-xor = 1
+xor = 7
 rand = 1
-hash = 5
+hash = 8
+gen = 0
+rands = 0
 other = 0
 total_uav_time = 0.02646*num_xor+0.06135*num_hash + \
-    0.01052*num_rand+2.06104*num_puf+0.82487*num_aes
+    0.01052*num_rand+2.06104*num_puf+0.82487 * \
+    num_aes+1.8238*num_gen+0.63792*num_rands
 total_gs_time = 0.00537*xor+0.00904*hash + \
-    0.00358*rand+0.28915*aes+other
-print("协议计算时间(ms)为：", total_uav_time+total_gs_time)'''
+    0.00358*rand+0.28915*aes+0.71081*gen+0.20754*rands
+print("协议计算时间(ms)为：", total_uav_time+total_gs_time)
+print("无人机端时间为：", total_uav_time)
+print("地面站端时间为：", total_gs_time)
